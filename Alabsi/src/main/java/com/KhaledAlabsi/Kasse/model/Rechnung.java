@@ -29,8 +29,10 @@ public class Rechnung {
     @Basic
     private java.sql.Time zeit;
     
+    
+  // ich bin nicht von diese normalisierung der Tabelle überzeugt, da mit der Ziet sehr sehr groß wird!
+    // ohne    @JsonBackReference kommt es zo endlose schleife beim abfrage! 
   @JsonBackReference
- 
   @ManyToMany(fetch = FetchType.EAGER,
   cascade = CascadeType.ALL)
 

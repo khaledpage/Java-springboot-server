@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,11 +37,17 @@ public class RechnungController {
 	
 	 @PostMapping("/neu")
 	 Rechnung neueRechnung(@RequestBody Rechnung neueRechnung) {
+		 
+		 // es wird noch nicht funktionieren, da ich noch keine geingte Methode zu mappen zu DB gemacht!
+		 // es war funktionfähig bevor ich meine Modele verändert habe, und association zwischen denen gemacht habe
+		 // werde ich vllt später funktionfähig machen
 	    return rechnungRepository.save(neueRechnung);
 	  }
 	
 	 @PutMapping("/{id}")
 	 Optional<Rechnung> aendern(@RequestBody Rechnung neuRechnung, @PathVariable Long id) {
+		 
+		 // auch noch nicht verändert ansprechend die Veränderung in DB und die Modelle
 		return rechnungRepository.findById(id)
 				.map(rechnung ->{
 //					rechnung.setItems(neuRechnung.getItems());
@@ -59,21 +64,11 @@ public class RechnungController {
 	 
 	 @DeleteMapping("/{id}")
 	  void loeschen(@PathVariable Long id) {
+		// auch noch nicht verändert ansprechend die Veränderung in DB und die Modelle
 		 rechnungRepository.deleteById(id);
 	  }
 	 
 	 
-//	@PostMapping(path="/add") // Map ONLY POST Requests
-//	  public @ResponseBody String neueRechnung (@RequestParam String name
-//	      , @RequestParam String email) {
 
-//
-//		Rechnung n = new Rechnung();
-//	    n.setName(name);
-//	    n.setEmail(email);
-//	    rechnungRepository.save(n);
-//	    return "Saved";
-//	  }
-//	
 	
 }
